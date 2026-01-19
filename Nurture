@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Photographer Growth Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#0f172a;
+    color:#fff;
+    padding:20px;
+}
+.game-box{
+    max-width:750px;
+    margin:auto;
+    background:#020617;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+h1{
+    text-align:center;
+    color:#38bdf8;
+}
+.progress{
+    background:#1e293b;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+.progress-bar{
+    height:10px;
+    width:0%;
+    background:#22c55e;
+}
+.question{
+    margin-top:25px;
+}
+.question h3{
+    font-size:17px;
+    margin-bottom:10px;
+}
+.option{
+    background:#1e293b;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:8px;
+    cursor:pointer;
+}
+.option:hover{
+    background:#334155;
+}
+button{
+    width:100%;
+    margin-top:20px;
+    padding:12px;
+    font-size:16px;
+    background:#22c55e;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+.result{
+    display:none;
+    margin-top:25px;
+    padding:20px;
+    border-radius:10px;
+}
+.level{
+    font-size:22px;
+    color:#38bdf8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="game-box">
+<h1>📸 Photographer Growth Game</h1>
+<p style="text-align:center;color:#94a3b8;">
+Play this 2-minute game & discover your booking growth level
+</p>
+
+<div class="progress">
+<div id="progressBar" class="progress-bar"></div>
+</div>
+
+<form id="gameForm">
+
+<div class="question">
+<h3>🎯 Level 1: Where do your enquiries mostly come from?</h3>
+<div class="option"><input type="radio" name="q1" value="1"> Mostly referrals (depends on luck)</div>
+<div class="option"><input type="radio" name="q1" value="2"> Instagram organic only</div>
+<div class="option"><input type="radio" name="q1" value="3"> Paid ads + organic system</div>
+</div>
+
+<div class="question">
+<h3>⚡ Level 2: How fast do you contact new leads?</h3>
+<div class="option"><input type="radio" name="q2" value="1"> After few hours / next day</div>
+<div class="option"><input type="radio" name="q2" value="2"> Within 1–2 hours</div>
+<div class="option"><input type="radio" name="q2" value="3"> Within 10–30 minutes</div>
+</div>
+
+<div class="question">
+<h3>🔥 Level 3: What happens after you send pricing?</h3>
+<div class="option"><input type="radio" name="q3" value="1"> Client disappears</div>
+<div class="option"><input type="radio" name="q3" value="2"> I follow up once</div>
+<div class="option"><input type="radio" name="q3" value="3"> Automated follow-up system</div>
+</div>
+
+<div class="question">
+<h3>🚀 Level 4: Your current ad strategy?</h3>
+<div class="option"><input type="radio" name="q4" value="1"> No ads yet</div>
+<div class="option"><input type="radio" name="q4" value="2"> Boosted posts</div>
+<div class="option"><input type="radio" name="q4" value="3"> Funnel-based lead ads</div>
+</div>
+
+<div class="question">
+<h3>🏆 Final Level: Your monthly booking confidence?</h3>
+<div class="option"><input type="radio" name="q5" value="1"> Not predictable</div>
+<div class="option"><input type="radio" name="q5" value="2"> Sometimes stable</div>
+<div class="option"><input type="radio" name="q5" value="3"> Predictable & scalable</div>
+</div>
+
+<button type="button" onclick="showResult()">Reveal My Growth Level</button>
+</form>
+
+<div id="result" class="result"></div>
+
+</div>
+
+<script>
+function showResult(){
+    let score = 0;
+    let total = 5;
+
+    for(let i=1;i<=total;i++){
+        let ans = document.querySelector('input[name="q'+i+'"]:checked');
+        if(!ans){
+            alert("Complete all levels to unlock result");
+            return;
+        }
+        score += parseInt(ans.value);
+        document.getElementById("progressBar").style.width = (i/total)*100 + "%";
+    }
+
+    let res = document.getElementById("result");
+    res.style.display = "block";
+
+    if(score <= 7){
+        res.style.background="#7f1d1d";
+        res.innerHTML = `
+        <div class="level">🟥 Growth Level: Survival Mode</div>
+        <p>You are running your photography business on luck & referrals.</p>
+        <p>📉 Missed Opportunity: Consistent premium enquiries</p>
+        <p>Top studios never depend only on referrals.</p>
+        `;
+    } 
+    else if(score <= 11){
+        res.style.background="#78350f";
+        res.innerHTML = `
+        <div class="level">🟨 Growth Level: Struggling Scale</div>
+        <p>You are doing many things right, but without a system.</p>
+        <p>⚠️ Missed Opportunity: Follow-ups, ad funnels & lead quality</p>
+        <p>This is where most photographers get stuck.</p>
+        `;
+    } 
+    else{
+        res.style.background="#14532d";
+        res.innerHTML = `
+        <div class="level">🟩 Growth Level: Scale Ready</div>
+        <p>You have a solid foundation.</p>
+        <p>🚀 Next unlock: Automation, premium positioning & ROI ads</p>
+        <p>Few photographers reach this stage.</p>
+        `;
+    }
+}
+</script>
+
+</body>
+</html>
+<div id="interestSection" style="margin-top:20px;">
+    <h3>💬 What would you like to do next?</h3>
+
+    <button onclick="showYes()" style="background:#22c55e;margin-top:10px;">
+        ✅ I want to improve my digital marketing
+    </button>
+
+    <button onclick="showNo()" style="background:#64748b;margin-top:10px;">
+        ❌ Not now
+    </button>
+</div>
+
+<div id="yesSection" style="display:none;margin-top:20px;">
+    <p>🔥 Great choice!</p>
+    <p>Would you like to explore:</p>
+    <ul>
+        <li>📈 Lead Generation Ads</li>
+        <li>📱 Instagram Growth</li>
+        <li>🤝 Complete Digital Marketing Setup</li>
+    </ul>
+
+    <a href="https://wa.me/91XXXXXXXXXX" target="_blank">
+        <button style="background:#38bdf8;">
+            📲 Chat on WhatsApp
+        </button>
+    </a>
+</div>
+
+<div id="noSection" style="display:none;margin-top:20px;">
+    <p>🙏 Thank you for your honesty.</p>
+    <p>May I know what’s stopping you right now?</p>
+
+    <select id="noReason" style="width:100%;padding:10px;margin-top:10px;">
+        <option value="">Select a reason</option>
+        <option>Budget concern</option>
+        <option>Already working with someone</option>
+        <option>Not priority now</option>
+        <option>Need more clarity</option>
+        <option>Just exploring</option>
+    </select>
+
+    <button onclick="submitReason()" style="margin-top:10px;background:#f59e0b;">
+        Submit
+    </button>
+</div>
+
+<div id="thankYou" style="display:none;margin-top:20px;">
+    <p>🙏 Thank you for sharing.</p>
+    <p>I’ll share helpful insights based on this in future.</p>
+</div>
+<script>
+function showYes(){
+    document.getElementById("interestSection").style.display="none";
+    document.getElementById("yesSection").style.display="block";
+}
+
+function showNo(){
+    document.getElementById("interestSection").style.display="none";
+    document.getElementById("noSection").style.display="block";
+}
+
+function submitReason(){
+    let reason = document.getElementById("noReason").value;
+    if(reason === ""){
+        alert("Please select a reason");
+        return;
+    }
+    document.getElementById("noSection").style.display="none";
+    document.getElementById("thankYou").style.display="block";
+}
+</script>
