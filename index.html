@@ -252,3 +252,58 @@ function submitReason(){
     document.getElementById("thankYou").style.display="block";
 }
 </script>
+<!-- Nurturing Decision Section -->
+<div id="interestBox" style="margin-top:25px;">
+    <h3>💬 What would you like to do next?</h3>
+
+    <button onclick="yesInterested()" style="background:#22c55e;margin-top:10px;">
+        ✅ Yes, I want to improve my digital marketing
+    </button>
+
+    <button onclick="noInterested()" style="background:#64748b;margin-top:10px;">
+        ❌ Not now
+    </button>
+</div>
+
+<!-- YES – Interested -->
+<div id="yesBox" style="display:none;margin-top:25px;">
+    <p>🔥 Great choice!</p>
+    <p>
+        Most photographers at your level lose bookings due to<br>
+        • Follow-up gaps<br>
+        • Wrong ad strategy<br>
+        • Low-quality enquiries
+    </p>
+
+    <a href="https://wa.me/919080198927?text=Hi%20Raji%2C%20I%20completed%20the%20Photographer%20Growth%20Quiz%20and%20I%20want%20to%20improve%20my%20digital%20marketing."
+       target="_blank">
+        <button style="background:#38bdf8;">
+            📲 Chat on WhatsApp
+        </button>
+    </a>
+</div>
+
+<!-- NO – Not Interested Now -->
+<div id="noBox" style="display:none;margin-top:25px;">
+    <p>🙏 Thanks for your honesty.</p>
+    <p>May I know what’s stopping you right now?</p>
+
+    <select id="noReason" style="width:100%;padding:10px;margin-top:10px;">
+        <option value="">Select a reason</option>
+        <option>Budget concern</option>
+        <option>Already working with someone</option>
+        <option>Not priority now</option>
+        <option>Need more clarity</option>
+        <option>Just exploring</option>
+    </select>
+
+    <button onclick="submitNoReason()" style="margin-top:10px;background:#f59e0b;">
+        Submit
+    </button>
+</div>
+
+<!-- Thank You -->
+<div id="thankYouBox" style="display:none;margin-top:25px;">
+    <p>🙏 Thank you for sharing.</p>
+    <p>I’ll keep sharing useful tips to help you grow.</p>
+</div>
